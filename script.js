@@ -7,13 +7,32 @@ const context = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+//Color Palett
+function randomColor(min, max) {
+  return Math.floor(min + Math.random() * (max - min + 1));
+}
+
+//URL: palettes.shecodes.io
+let weirdColor1 = "#ff5d9e";
+let weirdColor2 = "#8f71ff";
+let weirdColor3 = "#82acff";
+let weirdColor4 = "#8bffff";
+
+const colors = [weirdColor1, weirdColor2, weirdColor3, weirdColor4];
+
+//Ball Functionality
 let ballArray = [];
 
 function Ball() {
   this.x = Math.floor(Math.random() * window.innerWidth);
   this.y = Math.floor(window.innerHeight);
   this.size = Math.floor(Math.random() * 10 + 35);
-  this.color = "rgb(59, 248, 255)";
+  this.color = colors[randomColor(0, colors.length - 1)];
+  
+  /*
+  URL: https://css-tricks.com/snippets/javascript/random-hex-color
+  this.color = '#' + Math.floor(Math.random()16777215).toString(16); 
+  */
 
   this.speedY = 10;
   this.speedX = Math.random((Math.random() - 0.5) * 4);
@@ -80,6 +99,8 @@ function animate() {
   renderBalls();
   animationId = requestAnimationFrame(animate);
 }
+
+//Collison / Mouse Coordinates & Behaviour
 
 let mouseX = 0;
 let mouseY = 0;
