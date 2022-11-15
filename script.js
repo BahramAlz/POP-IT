@@ -1,8 +1,10 @@
 "use strict";
+// Importing Ball Explosions
+import { ballParticlesArray, BallParticles, renderBallParticles} from "./particles.js";
 
 //Main Logic for canvas
 const canvas = document.getElementById("canvas");
-const context = canvas.getContext("2d");
+export const context = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -13,22 +15,22 @@ function randomColor(min, max) {
 }
 
 //URL: palettes.shecodes.io
-let weirdColor1 = "#ff5d9e";
-let weirdColor2 = "#8f71ff";
-let weirdColor3 = "#82acff";
-let weirdColor4 = "#8bffff";
+let pink = "#ff5d9e";
+let purple = "#8f71ff";
+let lightblue = "#82acff";
+let cyan = "#8bffff";
 
-const colors = [weirdColor1, weirdColor2, weirdColor3, weirdColor4];
+const colors = [pink, purple, lightblue, cyan];
 
 //Ball Functionality
 let ballArray = [];
+
 
 function Ball() {
   this.x = Math.floor(Math.random() * window.innerWidth);
   this.y = Math.floor(window.innerHeight);
   this.size = Math.floor(Math.random() * 10 + 35);
   this.color = colors[randomColor(0, colors.length - 1)];
-  
   /*
   URL: https://css-tricks.com/snippets/javascript/random-hex-color
   this.color = '#' + Math.floor(Math.random()16777215).toString(16); 
@@ -63,6 +65,13 @@ function renderBalls() {
     );
 
     if (distanceBetweenMouseAndBall - ballArray[i].size < 1) {
+      //The amount of Ball Particles
+      for (let index = 0; index < 8; index++) {
+        ballParticlesArray.push(
+          new BallParticles(ballArray[i].x, ballArray[i].y, ballArray[i].color)
+        );
+      }
+
       ballArray.splice(i, 1);
       i--;
       return;
@@ -79,7 +88,7 @@ let numberOfBallsToRender = [1, 2, 3, 4];
 
 //SetInterval to render the balls on an interval
 const startRenderingBallsInterval = () => {
-  let interval = setInterval(() => {
+  setInterval(() => {
     const numberOfBalls = Math.round(
       Math.random() * numberOfBallsToRender.length
     );
@@ -97,6 +106,7 @@ function animate() {
   context.fillStyle = `rgba(24, 28, 31, .5)`;
   context.fillRect(0, 0, canvas.width, canvas.height);
   renderBalls();
+  renderBallParticles();
   animationId = requestAnimationFrame(animate);
 }
 
