@@ -1,5 +1,5 @@
 "use strict";
-  
+ 
 //gamer name submit form
 let form = document.getElementById("gamerNameForm");
 form.onsubmit = function (event) {
