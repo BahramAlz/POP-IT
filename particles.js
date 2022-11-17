@@ -1,5 +1,5 @@
 //Importing context
-import { context } from "./script.js";
+import { context } from "./canvas-script.js";
 
 export let ballParticlesArray = [];
 
