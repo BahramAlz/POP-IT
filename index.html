@@ -8,16 +8,48 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
     <title>FRUIT NINJA REPLICA</title>
-  </head>
-  <body>
-    <header></header>
+</head>
+<body>
+  <main>
+    <canvas id="canvas"></canvas>
+  </main>
+  
+  <!-- the biggest flexbox-->
+  <div class="container">
+    <h1>Fruit Ninja Replica</h1>
+    <p>
+      Instructions: Break as many circles as possible.  
+    </p>
+     
 
-    <main>
-      <canvas id="canvas"></canvas>
-    </main>
+    <div class="name" id="name">
+      Enter your name below.
+      <form id="gamerNameForm">
+        <input type="text" name="gamerName" class="inputBox"/>
+        <button type="submit" class="inputBox">Submit</button>
+      </form>
+    </div>
 
-    <footer></footer>
+    <div id="welcomeMsg"></div>
+    <div class="letBegin" id="letBegin">
 
-    <script src="canvas-script.js" type="module"></script>
-  </body>
-</html>
+      <button class="startButton" id="StartButton">START!</button>
+    </div>
+
+    <div class="=startMessage" id="startMessage">
+      <p>
+        The game starts now
+      </p>
+       </div>
+       <footer> 
+          
+          <p  class="copyright">
+              Done by: Ninja Turtles &copy;copyright2022&mdash;<span id="currentYear"></span>
+          </p>
+       </footer>
+       </div>
+  <script src="script.js"></script>
+  <script src="canvas-script.js" type="module"></script>
+</body>
+ 
+ 
