@@ -1,9 +1,13 @@
 "use strict";
 // Importing Ball Explosions
-import { ballParticlesArray, BallParticles, renderBallParticles} from "./particles.js";
+import {
+  ballParticlesArray,
+  BallParticles,
+  renderBallParticles,
+} from "./particles.js";
 
 //Main Logic for canvas
-const canvas = document.getElementById("canvas");
+export const canvas = document.getElementById("canvas");
 export const context = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
@@ -24,7 +28,6 @@ const colors = [pink, purple, lightblue, cyan];
 
 //Ball Functionality
 let ballArray = [];
-
 
 function Ball() {
   this.x = Math.floor(Math.random() * window.innerWidth);
@@ -120,5 +123,18 @@ canvas.addEventListener("mousemove", (e) => {
   mouseY = e.clientY;
 });
 
-animate();
-startRenderingBallsInterval();
+//START GAME FUNCTION
+export function startGame() {
+  animate();
+  startRenderingBallsInterval();
+  canvas.style.display = "block";
+}
+
+//END GAME FUNCTON //
+// export function endGame() {
+//   if(countDown === 0){
+//     cancelAnimationFrame(animate);
+//     endBox.style.display = "block";
+
+//   }
+// }

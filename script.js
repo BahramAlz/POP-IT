@@ -1,5 +1,6 @@
 "use strict";
- 
+import { startGame} from "./canvas-script.js";
+
 //gamer name submit form
 let form = document.getElementById("gamerNameForm");
 form.onsubmit = function (event) {
@@ -20,8 +21,11 @@ button.addEventListener("click", Start);
 function Start() {
   //Hide the start button
   document.getElementById("letBegin").style.display = "none";
+
+  startGame();
+
   // print "the game starts now"
-  document.getElementById("startMessage").style.display = "block";
+  //document.getElementById("startMessage").style.display = "block";
 }
 
 //hide "The game starts now"
