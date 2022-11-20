@@ -1,5 +1,5 @@
 "use strict";
-// when user click start button
+
 const countdownEL = document.getElementById("countDownText");
 let start = document.getElementById("StartButton");
 let pause = document.getElementById("PauseButton");
@@ -33,6 +33,7 @@ function Start() {
 }
 
 function Pause() {
+  //prevent multiple clicks
   clearInterval(clock);
   clickable = true;
 }
