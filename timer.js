@@ -1,49 +1,53 @@
 "use strict";
-
-
-
-// start button
-let button = document.getElementById("StartButton");
-button.addEventListener("click", Start);
-
+// when user click start button
+const countdownEL = document.getElementById("countDownText");
+let start = document.getElementById("StartButton");
+let pause = document.getElementById("PauseButton");
+let reset = document.getElementById("ResetButton");
+let starting_minute = 1;
+let starting_second = 0;
+let total_seconds = starting_minute * 60 + starting_second;
+let starting_time = total_seconds;
+let clickable = true;
+start.addEventListener("click", Start);
+pause.addEventListener("click", Pause);
+reset.addEventListener("click", Reset);
 
 function clockStart() {
+  total_seconds > 0 ? total_seconds-- : countDone();
 
-
-  const startingMinutes = 1;
-  let time = startingMinutes * 60; //all the seconds
-
-  const countdownEL = document.getElementById('countDownText');
-  console.log('countDown');
-
-  let myInterval = setInterval(updateCountdown, 1000);
-
-  function updateCountdown() {
-    const minutes = Math.floor(time / 60);
-
-
-    let seconds = time % 60;
-
-    //add 0 to number that less than 10 in front of them
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-
-    countdownEL.innerHTML = `${minutes}:${seconds}`;
-
-    time--;
-  }
+  let display_minute = Math.floor(total_seconds / 60);
+  let display_second = total_seconds - display_minute * 60;
+  let countdown = '0' + display_minute + ':';
+  countdown = countdown + (display_second < 10 ? '0' + display_second : display_second);
+  countdownEL.innerHTML = countdown;
 }
+
+let clock;
 
 function Start() {
-  clockStart();
-  Stop();
-}
-
-
-function Stop() {
-  if (minutes < 0) {
-    clearInterval(myInterval);
+  if (clickable) {
+    clock = setInterval(() => clockStart(), 1000);
+    clickable = false;
   }
 }
 
+function Pause() {
+  clearInterval(clock);
+  clickable = true;
+}
+
+function Reset() {
+  clickable = true;
+  total_seconds = starting_time + 1;
+  clockStart();
+}
+
+function countDone() {
+  clearInterval(clock);
+  // do thing when count done!
+  console.log('Count Finished!');
+
+}
 
 

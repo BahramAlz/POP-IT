@@ -1,20 +1,5 @@
-.countDown-timer {
-  position: fixed;
-  right: 1rem;
-  top: 0;
-  border: 1px solid #f542c2;
-  background-color: orchid;
-  border-radius: 10px;
-  border-width: 2px;
-  padding: 2px 4px;
-  font-size: 25px;
-  width: 3.5rem;
-  text-align: center;
-}
-
 .startButton {
   background-color: white;
-  /* border: none; */
   border-radius: 12px;
   color: black;
   padding: 5px 5px;
@@ -30,4 +15,18 @@
   background-color: white;
   color: black;
   transform: scale(1.25);
+}
+
+.countDown-timer {
+  position: fixed;
+  right: 1rem;
+  top: 0;
+  border: 1px solid #f542c2;
+  background-color: orchid;
+  border-radius: 10px;
+  border-width: 2px;
+  padding: 2px 4px;
+  font-size: 25px;
+  width: 3.5rem;
+  text-align: center;
 }
