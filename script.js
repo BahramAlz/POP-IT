@@ -11,7 +11,7 @@ let name = form.elements.gamerName.value;
   document.getElementById("welcomeMsg").innerHTML =
     "Hello " + name + ", Good luck!";
   document.getElementById("name").style.display = "none";
-  document.getElementById("letBegin").style.display = "block";
+  document.getElementById("letBegin").style.display = "flex";
 };
 
 // start button
