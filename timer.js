@@ -28,17 +28,19 @@ let clock;
 function Start() {
   if (clickable) {
     clock = setInterval(() => clockStart(), 1000);
+    //prevent multiple clicks
     clickable = false;
   }
 }
 
 function Pause() {
-  //prevent multiple clicks
   clearInterval(clock);
+  //prevent multiple clicks
   clickable = true;
 }
 
 function Reset() {
+  //prevent multiple clicks
   clickable = true;
   total_seconds = starting_time + 1;
   clockStart();
