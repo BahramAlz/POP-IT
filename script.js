@@ -23,9 +23,6 @@ function Start() {
   document.getElementById("letBegin").style.display = "none";
 
   startGame();
-
-  // print "the game starts now"
-  //document.getElementById("startMessage").style.display = "block";
 }
 
 //hide "The game starts now"
