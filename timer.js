@@ -1,6 +1,6 @@
 "use strict";
 
-const countdownEL = document.getElementById("countDownText");
+let countdownEL = document.getElementById("countDownText");
 let start = document.getElementById("StartButton");
 let pause = document.getElementById("PauseButton");
 let reset = document.getElementById("ResetButton");
@@ -49,7 +49,7 @@ function Reset() {
 //Count finish function
 function countDone() {
   clearInterval(clock);
-  // do thing when count done!
+  // do things when count done!
   console.log('Count Finished!');
 
 }
