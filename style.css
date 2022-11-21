@@ -54,6 +54,39 @@ body {
   box-shadow: none;
 }
 
+.startButton {
+  background-color: white;
+  border-radius: 12px;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 40px auto 0 auto;
+  transition: 0.2s ease-in-out 0s;
+}
+
+.startButton:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.25);
+}
+
+.countDown-timer {
+  position: fixed;
+  right: 1rem;
+  top: 0;
+  border: 1px solid #f542c2;
+  background-color: orchid;
+  border-radius: 10px;
+  border-width: 2px;
+  padding: 2px 4px;
+  font-size: 25px;
+  width: 3.5rem;
+  text-align: center;
+}
+
 .footer-container{
   position: fixed;
   left: 0;
