@@ -10,6 +10,7 @@ let total_seconds = starting_minute * 60 + starting_second;
 let starting_time = total_seconds;
 let clock;
 let clickable = true;
+
 start.addEventListener("click", Start);
 pause.addEventListener("click", Pause);
 reset.addEventListener("click", Reset);
