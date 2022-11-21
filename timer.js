@@ -1,56 +1,31 @@
 "use strict";
 
-let countdownEL = document.getElementById("countDownText");
-let start = document.getElementById("StartButton");
-let pause = document.getElementById("PauseButton");
-let reset = document.getElementById("ResetButton");
-let starting_minute = 1;
-let starting_second = 0;
-let total_seconds = starting_minute * 60 + starting_second;
-let starting_time = total_seconds;
-let clock;
-let clickable = true;
+import { endGame } from "./canvas-script.js";
 
-start.addEventListener("click", Start);
-pause.addEventListener("click", Pause);
-reset.addEventListener("click", Reset);
+export let countdownEL = document.getElementById("countDownText");
+let starting_minute = 0;
+let starting_second = 5;
+let total_seconds = starting_minute * 60 + starting_second;
+let clock;
 
 function clockStart() {
   total_seconds > 0 ? total_seconds-- : countDone();
 
   let display_minute = Math.floor(total_seconds / 60);
   let display_second = total_seconds - display_minute * 60;
-  let countdown = '0' + display_minute + ':';
-  countdown = countdown + (display_second < 10 ? '0' + display_second : display_second);
+  let countdown = "0" + display_minute + ":";
+  countdown =
+    countdown + (display_second < 10 ? "0" + display_second : display_second);
   countdownEL.innerHTML = countdown;
 }
 
-
-function Start() {
-  if (clickable) {
-    clock = setInterval(() => clockStart(), 1000);
-    //prevent multiple clicks
-    clickable = false;
-  }
-}
-//pause the timer
-function Pause() {
-  clearInterval(clock);
-  //make button clickable again
-  clickable = true;
-}
-//reset the timer
-function Reset() {
-  //make button clickable again
-  clickable = true;
-  total_seconds = starting_time + 1;
-  clockStart();
+export function timerStart() {
+  clock = setInterval(() => clockStart(), 1000);
+  //prevent multiple clicks
 }
 
 //Count finish function
-function countDone() {
+export function countDone() {
   clearInterval(clock);
-  // do things when count done!
-  console.log('Count Finished!');
-
+  endGame();
 }

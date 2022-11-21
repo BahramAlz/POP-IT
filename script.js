@@ -1,20 +1,25 @@
 "use strict";
-import { startGame} from "./canvas-script.js";
+import { startGame, endGame } from "./canvas-script.js";
+import { timerStart, countdownEL } from "./timer.js";
+import { scoreContainer, score } from "./score.js";
 
 let startButton = document.getElementById("startButton");
 let form = document.getElementById("gamerNameForm");
+let welcomeMsg = document.getElementById("welcomeMsg");
+let nameDiv = document.getElementById("nameDiv");
+let startButtonDiv = document.getElementById("letBegin");
+let containerDiv = document.getElementById("container");
+let currentYear = document.getElementById("currentYear");
 
-let name = form.elements.gamerName.value;
+let gamerName = form.elements.gamerName.value;
 
 //gamer name submit form
 form.onsubmit = function (event) {
   event.preventDefault();
   // welcome message to the player
-  document.getElementById("welcomeMsg").innerHTML =
-    "Hello " + name + ", Good luck!";
-  document.getElementById("name").style.display = "none";
-  document.getElementById("letBegin").style.display = "block";
-
+  welcomeMsg.innerHTML = "Hello " + gamerName + ", Good luck!";
+  nameDiv.style.display = "none";
+  startButtonDiv.style.display = "block";
   startButton.style.display = "block";
 };
 
@@ -23,17 +28,15 @@ startButton.addEventListener("click", Start);
 //the function 'Start' shows "the game starts now" on the screen for the time being
 function Start() {
   //Hide the start button
-  document.getElementById("container").style.display = "none";
-
+  containerDiv.style.display = "none";
+  countdownEL.style.display = "block";
+  scoreContainer.style.display = "block";
+  timerStart();
   startGame();
+  score;
 }
 
-//hide "The game starts now"
-document.getElementById("startMessage").style.display = "none";
-//Hide the start button
-document.getElementById("letBegin").style.display = "none";
-
 //copyright notice
-let date= new Date();
-let year= date.getFullYear();
-document.getElementById("currentYear").innerHTML=year;
+let date = new Date();
+let year = date.getFullYear();
+currentYear.innerHTML = year;

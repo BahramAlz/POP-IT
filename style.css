@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #ffb8ce; 
+  background-color: #ffb8ce;
   color: black;
   font-size: 20px;
 }
@@ -15,7 +15,7 @@ body {
   display: none;
   cursor: crosshair;
 }
- 
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -38,10 +38,12 @@ body {
   margin: 40px auto 0 auto;
   flex-wrap: wrap;
 }
+
 .startButton:hover {
   background-color: white;
   color: black;
 }
+
 .inputBox {
   color: black;
   font-size: 16px;
@@ -61,7 +63,7 @@ body {
   padding: 5px 5px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: none;
   font-size: 15px;
   margin: 40px auto 0 auto;
   transition: 0.2s ease-in-out 0s;
@@ -71,6 +73,13 @@ body {
   background-color: white;
   color: black;
   transform: scale(1.25);
+}
+
+.scoreContainer {
+  position: absolute;
+  top: 0;
+  display: none;
+  color: red;
 }
 
 .countDown-timer {
@@ -85,14 +94,48 @@ body {
   font-size: 25px;
   width: 3.5rem;
   text-align: center;
+  display: none;
 }
 
-.footer-container{
+.end-game-div{
+height: 265px;
+width: 500px;
+position: absolute;
+background-color:red ;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+display: none;
+}
+
+.end-game-div-styling{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: grey;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-game-button{
+  background-color: white;
+  border-radius: 12px;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 40px;
+  width: 100px;
+}
+
+.footer-container {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
- } 
-
- 
+}

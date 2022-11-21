@@ -6,6 +6,10 @@ import {
   renderBallParticles,
 } from "./particles.js";
 
+import { addScore } from "./score.js";
+
+let endGameDiv = document.getElementById("endGameDiv");
+
 //Main Logic for canvas
 export const canvas = document.getElementById("canvas");
 export const context = canvas.getContext("2d");
@@ -68,6 +72,8 @@ function renderBalls() {
     );
 
     if (distanceBetweenMouseAndBall - ballArray[i].size < 1) {
+      addScore();
+
       //The amount of Ball Particles
       for (let index = 0; index < 8; index++) {
         ballParticlesArray.push(
@@ -130,11 +136,8 @@ export function startGame() {
   canvas.style.display = "block";
 }
 
-//END GAME FUNCTON //
-// export function endGame() {
-//   if(countDown === 0){
-//     cancelAnimationFrame(animate);
-//     endBox.style.display = "block";
-
-//   }
-// }
+// END GAME FUNCTION
+export function endGame() {
+  cancelAnimationFrame(animationId);
+  endGameDiv.style.display = "block";
+}
