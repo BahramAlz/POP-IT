@@ -32,13 +32,13 @@ function Start() {
     clickable = false;
   }
 }
-
+//pause the timer
 function Pause() {
   clearInterval(clock);
   //prevent multiple clicks
   clickable = true;
 }
-
+//reset the timer
 function Reset() {
   //prevent multiple clicks
   clickable = true;
@@ -46,6 +46,7 @@ function Reset() {
   clockStart();
 }
 
+//Count finish function
 function countDone() {
   clearInterval(clock);
   // do thing when count done!
