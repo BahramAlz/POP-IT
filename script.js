@@ -10,6 +10,7 @@ let nameDiv = document.getElementById("nameDiv");
 let startButtonDiv = document.getElementById("letBegin");
 let containerDiv = document.getElementById("container");
 let currentYear = document.getElementById("currentYear");
+let footer=document.getElementById("footer-container");
 
 let gamerName = form.elements.gamerName.value;
 
@@ -25,9 +26,10 @@ form.onsubmit = function (event) {
 
 // start button
 startButton.addEventListener("click", Start);
-//the function 'Start' shows "the game starts now" on the screen for the time being
+//the function 'Start':the game begins
 function Start() {
   //Hide the start button
+  footer.style.display="none";
   containerDiv.style.display = "none";
   countdownEL.style.display = "block";
   scoreContainer.style.display = "block";
