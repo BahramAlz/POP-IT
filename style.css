@@ -4,16 +4,16 @@
   box-sizing: border-box;
 }
 
-#canvas {
-  background-color: rgb(24, 28, 31);
-  display: none;
-  cursor: crosshair;
-}
-
 body {
   background-color: #ffb8ce; 
   color: black;
   font-size: 20px;
+}
+
+#canvas {
+  background-color: rgb(24, 28, 31);
+  display: none;
+  cursor: crosshair;
 }
  
 .container {
@@ -24,13 +24,6 @@ body {
   align-items: center;
   margin-top: 5rem;
 }
-footer{
- position: fixed;
- left: 0;
- bottom: 0;
- width: 100%;
- text-align: center;
-} 
 
 .startButton {
   background-color: white;
@@ -60,9 +53,13 @@ footer{
   border: 1px solid black;
   box-shadow: none;
 }
-#startMessage {
-  margin: 50px auto 0 auto;
-  padding: 10px;
-}
+
+.footer-container{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+ } 
 
  
