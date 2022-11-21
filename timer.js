@@ -36,12 +36,12 @@ function Start() {
 //pause the timer
 function Pause() {
   clearInterval(clock);
-  //prevent multiple clicks
+  //make button clickable again
   clickable = true;
 }
 //reset the timer
 function Reset() {
-  //prevent multiple clicks
+  //make button clickable again
   clickable = true;
   total_seconds = starting_time + 1;
   clockStart();
