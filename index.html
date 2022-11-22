@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link href="https://fonts.googleapis.com/css2?family=Blaka&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Blaka&family=Rampart+One&display=swap" rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
-    <title>FRUIT NINJA REPLICA</title>
+    <title>POP IT</title>
   </head>
   <body>
     <main>
@@ -15,20 +19,21 @@
 
       <div class="container" id="container">
         <div>
-          <h1>Fruit Ninja Replica</h1> </br>
-          <p>Instructions: Break as many circles as possible.</p>
-    </div>
+          <h1>POP IT</h1> 
+          <h2>Instructions:</h2> <br>
+          <p>Pop as many circles as possible within the time limit of 1 minute by hovering over the circles.</p>
+      </div><br>
           <div id="nameDiv">
-            Enter your name below.
+            <p>Enter your name below</p>
             <form id="gamerNameForm">
               <input type="text" name="gamerName" class="inputBox" />
-              <button type="submit" class="inputBox">Submit</button>
+              <button type="submit" class="submit-button">Submit</button>
             </form>
           </div>
     
           <div id="welcomeMsg"></div>
           <div id="letBegin">
-            <button class="startButton"   id="startButton">START!</button>
+            <button class="startButton" id="startButton">START</button>
           </div>
       </div>
 
@@ -42,16 +47,18 @@
 
       <div class="end-game-div" id="endGameDiv">
         <div class="end-game-div-styling">
-          <p id="endGameText" class="end-game-p">blablalblabla</p>
-          <button class="end-game-button">Go Home</button>
+          <p>Name:</p>
+          <p id="endGameText" class="end-game-p">Score:</p>
+          <p id="endGameText" class="end-game-p">New HighScore:</p>
+          <button class="end-game-button">HOME</button>
         </div>
       </div>
       
     </main>
 
-      <footer class="footer-container">
+      <footer class="footer-container" id="footerContainer">
         <p>
-          Done by: Bahram Al-Zuhairi, Jonathan Zeray, Madeleine Norozkhani, Sammani Ariyarathne, Yinlu Gao
+          Done by: Bahram, Jonathan, Madeleine, Sammani, Yinlu
            &copy;copyright 2022&mdash;<span
             id="currentYear"
           ></span>

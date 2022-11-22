@@ -10,6 +10,7 @@ let nameDiv = document.getElementById("nameDiv");
 let startButtonDiv = document.getElementById("letBegin");
 let containerDiv = document.getElementById("container");
 let currentYear = document.getElementById("currentYear");
+let footerContainer = document.getElementById("footerContainer");
 
 let gamerName = form.elements.gamerName.value;
 
@@ -31,6 +32,7 @@ function Start() {
   containerDiv.style.display = "none";
   countdownEL.style.display = "block";
   scoreContainer.style.display = "block";
+  footerContainer.style.display = "none";
   timerStart();
   startGame();
   score;
