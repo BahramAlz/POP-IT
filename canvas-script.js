@@ -5,7 +5,7 @@ import {
   BallParticles,
   renderBallParticles,
 } from "./particles.js";
-
+//fff
 import { addScore } from "./score.js";
 
 let endGameDiv = document.getElementById("endGameDiv");
