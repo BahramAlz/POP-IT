@@ -1,5 +1,5 @@
 "use strict";
-import { startGame, endGame } from "./canvas-script.js";
+import { startGame } from "./canvas-script.js";
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";
 
@@ -11,6 +11,8 @@ let startButtonDiv = document.getElementById("letBegin");
 let containerDiv = document.getElementById("container");
 let currentYear = document.getElementById("currentYear");
 let footerContainer = document.getElementById("footerContainer");
+export let endGameDiv = document.getElementById("endGameDiv");
+let endGameButton = document.getElementById("endGameButton");
 
 let gamerName = form.elements.gamerName.value;
 
@@ -42,3 +44,16 @@ function Start() {
 let date = new Date();
 let year = date.getFullYear();
 currentYear.innerHTML = year;
+
+// //Return HOME BUTTON
+// endGameButton.addEventListener("click", () => {
+//   endGameDiv.style.display = "none";
+//   containerDiv.style.display = "flex";
+// });
+
+//Restart Button (Return HOME BUTTON)
+let refreshPage = () => {
+  location.reload();
+}
+
+endGameButton.addEventListener('click', refreshPage);

@@ -8,7 +8,7 @@ import {
 
 import { addScore } from "./score.js";
 
-let endGameDiv = document.getElementById("endGameDiv");
+import { endGameDiv } from "./script.js";
 
 //Main Logic for canvas
 export const canvas = document.getElementById("canvas");
