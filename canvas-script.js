@@ -176,8 +176,12 @@ export function endGame() {
   db.collection("posts").add({
     name: gamerName.value,
     score: score
-});
-renderPosts(posts);
+  });
+  
+  // Avoid console errors
+  if (window.posts) {
+    renderPosts(posts);
+  }
 }
 
 function renderPosts(posts) {
@@ -198,4 +202,17 @@ function renderPosts(posts) {
 
 function openUp() {
   top5Container.style.display = "block";
+}
+
+export function stopGame() {
+  canvas.style.display = "none";
+  
+  // Clear canvas
+  context.save()
+  context.clearRect(0, 0, canvas.width, canvas.height)
+  context.restore()
+  
+  // Reset ball array
+  ballArray = []
+  clearInterval(ballRendering);
 }

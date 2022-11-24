@@ -148,7 +148,7 @@ h1 {
   font-weight: 600;
   transition: 0.2s ease-in-out 0s;
   margin-top: 20px;
-
+  min-width: 150px;
 }
 
 .footer-container {
@@ -168,3 +168,6 @@ h1 {
   font-size: 20px;
 }
 
+button {
+  cursor: pointer;
+}

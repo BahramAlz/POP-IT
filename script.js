@@ -1,8 +1,7 @@
 "use strict";
-import { startGame, canvas, endGameDiv, ballRendering } from "./canvas-script.js"; //endgame
-import { timerStart, countdownEL } from "./timer.js";
-import { scoreContainer, score } from "./score.js";
-
+import { startGame, endGameDiv, stopGame } from "./canvas-script.js"; //endgame
+import { resetTimer, countdownEL } from "./timer.js";
+import { scoreContainer, resetScore } from "./score.js";
 
 let startButton = document.getElementById("startButton");
 let form = document.getElementById("gamerNameForm");
@@ -13,13 +12,18 @@ let containerDiv = document.getElementById("container");
 let currentYear = document.getElementById("currentYear");
 let footerContainer = document.getElementById("footerContainer");
 let goHomeBtn = document.getElementById("goHomeBtn");
+let retryBtn = document.getElementById("retryBtn");
 
 goHomeBtn.addEventListener("click", function () {
-  // location.reload();
-  canvas.style.display = "none";
+  location.reload();
+})
+
+retryBtn.addEventListener("click", function () {
+  stopGame()
   endGameDiv.style.display = "none";
   containerDiv.style.display = "flex";
-  clearInterval(ballRendering);
+  scoreContainer.style.display = "none";
+  countdownEL.style.display = "none";
 })
 
 //  let gamerName = form.elements.gamerName.value;
@@ -47,9 +51,9 @@ function Start() {
   countdownEL.style.display = "block";
   scoreContainer.style.display = "block";
   footerContainer.style.display = "none";
-  timerStart();
   startGame();
-  score;
+  resetScore()
+  resetTimer()
 }
 
 //copyright notice

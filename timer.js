@@ -20,6 +20,7 @@ function clockStart() {
 }
 
 export function timerStart() {
+  total_seconds = starting_minute * 60 + starting_second;
   clock = setInterval(() => clockStart(), 1000);
   //prevent multiple clicks
 }
@@ -28,4 +29,8 @@ export function timerStart() {
 export function countDone() {
   clearInterval(clock);
   endGame();
+}
+
+export function resetTimer() {
+  timerStart();
 }

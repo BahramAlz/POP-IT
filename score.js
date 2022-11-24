@@ -2,9 +2,16 @@ export let scoreContainer = document.getElementById("scoreContainer");
 
 export let score = 0;
 
-export function addScore() {
-  let scoreCounter = document.getElementById("scoreCounter"); // Jonathan
-  scoreCounter.innerHTML = " " + score++;
+let scoreCounter = document.getElementById("scoreCounter");
+
+export function addScore() { 
+  // scoreCounter.innerHTML = " " + score++;
+  scoreCounter.innerHTML = " " + (score++ + 1);
+}
+
+export function resetScore() {
+  score = 0
+  scoreCounter.innerHTML = " " + score; 
 }
 
 const hiscores = JSON.parse(localStorage.getItem("hiscores")) || []; // Has to be set outside of the function.
