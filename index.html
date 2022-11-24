@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- BLANKA GOOGLE FONT -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Blaka&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Blaka&family=Rampart+One&display=swap"
       rel="stylesheet"
     />
 
+    <!-- ACME GOOGLE FONT -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Blaka&family=Rampart+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
       rel="stylesheet"
     />
 
@@ -21,7 +23,6 @@
   </head>
   <body>
     <main>
-      
       <canvas class="canvas" id="canvas"></canvas>
 
       <div class="container" id="container">
@@ -37,8 +38,13 @@
         <br />
         <div id="nameDiv">
           <p>Enter your name below</p>
-          <form id="gamerNameForm">
-            <input type="text" name="gamerName" class="inputBox" />
+          <form id="gamerNameForm" autocomplete="off">
+            <input
+              type="text"
+              name="gamerName"
+              class="inputBox"
+              placeholder="Name"
+            />
             <button type="submit" class="submit-button">SUBMIT</button>
           </form>
         </div>
@@ -58,12 +64,10 @@
       </div>
 
       <div class="end-game-div" id="endGameDiv">
-        <div class="end-game-div-styling">
-          <h2>Name:</h2>
-          <h2 id="endGameText" class="end-game-p">Score:</h2>
-          <h2 id="endGameText" class="end-game-p">New HighScore:</h2>
-          <button class="end-game-button" id="endGameButton">HOME</button>
-        </div>
+        <h2>Name:</h2>
+        <h2 id="endGameText" class="end-game-p">Score:</h2>
+        <h2 id="endGameText" class="end-game-p">New HighScore:</h2>
+        <button class="end-game-button" id="endGameButton">HOME</button>
       </div>
     </main>
 

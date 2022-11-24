@@ -139,5 +139,5 @@ export function startGame() {
 // END GAME FUNCTION
 export function endGame() {
   cancelAnimationFrame(animationId);
-  endGameDiv.style.display = "block";
+  endGameDiv.style.display = "flex";
 }
