@@ -1,7 +1,8 @@
 "use strict";
-import { startGame, endGame } from "./canvas-script.js";
+import { startGame, canvas, endGameDiv, ballRendering } from "./canvas-script.js"; //endgame
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";
+
 
 let startButton = document.getElementById("startButton");
 let form = document.getElementById("gamerNameForm");
@@ -11,17 +12,30 @@ let startButtonDiv = document.getElementById("letBegin");
 let containerDiv = document.getElementById("container");
 let currentYear = document.getElementById("currentYear");
 let footerContainer = document.getElementById("footerContainer");
+let goHomeBtn = document.getElementById("goHomeBtn");
 
-let gamerName = form.elements.gamerName.value;
+goHomeBtn.addEventListener("click", function () {
+  // location.reload();
+  canvas.style.display = "none";
+  endGameDiv.style.display = "none";
+  containerDiv.style.display = "flex";
+  clearInterval(ballRendering);
+})
+
+//  let gamerName = form.elements.gamerName.value;
+
+export let gamerName = document.getElementById("myText");
+// console.log(gamerName);
 
 //gamer name submit form
 form.onsubmit = function (event) {
   event.preventDefault();
   // welcome message to the player
-  welcomeMsg.innerHTML = "Hello " + gamerName + ", Good luck!";
+  welcomeMsg.innerHTML = "Hello " + gamerName.value + ", Good luck!";
   nameDiv.style.display = "none";
   startButtonDiv.style.display = "block";
   startButton.style.display = "block";
+  console.log(gamerName.value)
 };
 
 // start button

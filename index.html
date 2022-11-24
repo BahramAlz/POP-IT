@@ -26,7 +26,7 @@
           <div id="nameDiv">
             <p>Enter your name below</p>
             <form id="gamerNameForm">
-              <input type="text" name="gamerName" class="inputBox" />
+              <input type="text" name="gamerName" class="inputBox" id="myText"/>
               <button type="submit" class="submit-button">Submit</button>
             </form>
           </div>
@@ -47,10 +47,12 @@
 
       <div class="end-game-div" id="endGameDiv">
         <div class="end-game-div-styling">
-          <p>Name:</p>
+          <p id="endGameName">Name:</p>
           <p id="endGameText" class="end-game-p">Score:</p>
           <p id="endGameText" class="end-game-p">New HighScore:</p>
-          <button class="end-game-button">HOME</button>
+          <button class="end-game-button" id="goHomeBtn">HOME</button>
+          <button class="end-game-button" id="top5">Top 5</button>
+          <div id="top5-container"></div>
         </div>
       </div>
       
@@ -64,7 +66,10 @@
           ></span>
         </p>  
       </footer>
-     
+
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore-compat.js"></script>
+    
     <script src="script.js" type="module"></script>
     <script src="canvas-script.js" type="module"></script>
     <script src="timer.js" type="module"></script>
