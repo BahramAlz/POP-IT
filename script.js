@@ -3,23 +3,20 @@ import { startGame } from "./canvas-script.js";
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";
 
-
-let startButton = document.getElementById("startButton");
-let form = document.getElementById("gamerNameForm");
-let welcomeMsg = document.getElementById("welcomeMsg");
-let nameDiv = document.getElementById("nameDiv");
-let startButtonDiv = document.getElementById("letBegin");
-let containerDiv = document.getElementById("container");
-let currentYear = document.getElementById("currentYear");
-let footerContainer = document.getElementById("footerContainer");
+const startButton = document.getElementById("startButton");
+const form = document.getElementById("gamerNameForm");
+const welcomeMsg = document.getElementById("welcomeMsg");
+const nameDiv = document.getElementById("nameDiv");
+const startButtonDiv = document.getElementById("letBegin");
+const containerDiv = document.getElementById("container");
+const currentYear = document.getElementById("currentYear");
+const footerContainer = document.getElementById("footerContainer");
 
 export let endGameDiv = document.getElementById("endGameDiv");
-let goHomeBtn = document.getElementById("goHomeBtn");
+const goHomeBtn = document.getElementById("goHomeBtn");
 goHomeBtn.addEventListener("click", function () {
-   location.reload();
-})
-
-
+  location.reload();
+});
 
 export let gamerName = document.getElementById("myText");
 
@@ -51,4 +48,3 @@ function Start() {
 let date = new Date();
 let year = date.getFullYear();
 currentYear.innerHTML = year;
-
