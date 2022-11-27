@@ -52,15 +52,3 @@ let date = new Date();
 let year = date.getFullYear();
 currentYear.innerHTML = year;
 
-// //Return HOME BUTTON
-// endGameButton.addEventListener("click", () => {
-//   endGameDiv.style.display = "none";
-//   containerDiv.style.display = "flex";
-// });
-
-//Restart Button (Return HOME BUTTON)
-let refreshPage = () => {
-  location.reload();
-}
-
-endGameButton.addEventListener('click', refreshPage);

@@ -175,7 +175,7 @@ export async function endGame() {
   cancelAnimationFrame(animationId);
 
 
-  endGameDiv.style.display = "block";
+  endGameDiv.style.display = "flex"; /// ändrad
   endGameText.innerHTML = "Score: " + score;
   endGameName.innerHTML = "Name: " + gamerName.value;
 

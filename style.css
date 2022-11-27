@@ -12,7 +12,7 @@ html {
 body {
   background-color: rgb(24, 28, 31);
   color: whitesmoke;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .canvas {
@@ -112,7 +112,7 @@ h1 {
 }
 
 .end-game-div {
-  height: 265px;
+  height: 280px;
   width: 500px;
   position: absolute;
   border-radius: 0.6rem;
@@ -126,7 +126,11 @@ h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-weight: 600;
+  font-weight: 400; 
+}
+
+.end-game-div p {
+  font-size: 18px;
 }
 
 .end-game-button {
@@ -159,10 +163,7 @@ h1 {
 }
 
 
-#top5-container {
-  margin: 0;
-  padding: 0;
+.top5-container {
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
 }
-
