@@ -3,6 +3,7 @@ import { startGame } from "./canvas-script.js";
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";
 
+
 let startButton = document.getElementById("startButton");
 let form = document.getElementById("gamerNameForm");
 let welcomeMsg = document.getElementById("welcomeMsg");
@@ -11,16 +12,22 @@ let startButtonDiv = document.getElementById("letBegin");
 let containerDiv = document.getElementById("container");
 let currentYear = document.getElementById("currentYear");
 let footerContainer = document.getElementById("footerContainer");
-export let endGameDiv = document.getElementById("endGameDiv");
-let endGameButton = document.getElementById("endGameButton");
 
-let gamerName = form.elements.gamerName.value;
+export let endGameDiv = document.getElementById("endGameDiv");
+let goHomeBtn = document.getElementById("goHomeBtn");
+goHomeBtn.addEventListener("click", function () {
+   location.reload();
+})
+
+
+
+export let gamerName = document.getElementById("myText");
 
 //gamer name submit form
 form.onsubmit = function (event) {
   event.preventDefault();
   // welcome message to the player
-  welcomeMsg.innerHTML = "Hello " + gamerName + ", Good luck!";
+  welcomeMsg.innerHTML = "Hello " + gamerName.value + ", Good luck!";
   nameDiv.style.display = "none";
   startButtonDiv.style.display = "block";
   startButton.style.display = "block";
