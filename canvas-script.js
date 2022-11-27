@@ -1,4 +1,19 @@
 "use strict";
+
+// FIREBASE (DATABASE NAME+SCORE STORAGE)
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAbVO-rVsWIxdvAAotKjZ4fkiXMYneeGzo",
+  authDomain: "pop-it-57db8.firebaseapp.com",
+  projectId: "pop-it-57db8",
+  storageBucket: "pop-it-57db8.appspot.com",
+  messagingSenderId: "466842860574",
+  appId: "1:466842860574:web:7b47ad936113f39236c20f",
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 // Importing Ball Explosions
 import {
   ballParticlesArray,
@@ -6,9 +21,24 @@ import {
   renderBallParticles,
 } from "./particles.js";
 
-import { addScore } from "./score.js";
+import { addScore, score } from "./score.js";
+import { gamerName } from "./script.js";
 
-let endGameDiv = document.getElementById("endGameDiv");
+export let endGameDiv = document.getElementById("endGameDiv");
+const endGameText = document.getElementById("endGameText");
+const endGameName = document.getElementById("endGameName");
+
+const top5Container = document.getElementById("top5-container");
+
+// async function getPosts(){       <--- this goes back
+//   const posts = await db.collection("posts").orderBy("score", "desc").limit(5).get();
+//   renderPosts(posts.docs);
+// }
+// db.collection("posts").orderBy("score", "desc").limit(5).onSnapshot(function (snapshot) {
+//   renderPosts(snapshot.docs)
+// });
+
+// getPosts(); <-- this goes back
 
 //Main Logic for canvas
 export const canvas = document.getElementById("canvas");
@@ -23,10 +53,10 @@ function randomColor(min, max) {
 }
 
 //URL: palettes.shecodes.io
-let pink = "#ff5d9e";
-let purple = "#8f71ff";
-let lightblue = "#82acff";
-let cyan = "#8bffff";
+const pink = "#ff5d9e";
+const purple = "#8f71ff";
+const lightblue = "#82acff";
+const cyan = "#8bffff";
 
 const colors = [pink, purple, lightblue, cyan];
 
@@ -94,7 +124,7 @@ function renderBalls() {
 }
 
 let numberOfBallsToRender = [1, 2, 3, 4];
-
+// export let ballRendering;
 //SetInterval to render the balls on an interval
 const startRenderingBallsInterval = () => {
   setInterval(() => {
@@ -137,7 +167,36 @@ export function startGame() {
 }
 
 // END GAME FUNCTION
-export function endGame() {
+export async function endGame() {
   cancelAnimationFrame(animationId);
-  endGameDiv.style.display = "block";
+
+  endGameDiv.style.display = "flex"; /// ändrad
+  endGameText.innerHTML = "Score: " + score;
+  endGameName.innerHTML = "Name: " + gamerName.value;
+
+  await db.collection("posts").add({
+    name: gamerName.value,
+    score: score,
+  });
+  db.collection("posts")
+    .orderBy("score", "desc")
+    .limit(5)
+    .onSnapshot(function (snapshot) {
+      renderPosts(snapshot.docs);
+    });
+  // renderPosts(posts);
+}
+
+function renderPosts(posts) {
+  // postsEl.innerHTML = "";
+
+  for (let post of posts) {
+    const data = post.data();
+
+    const postEl = document.createElement("p");
+    postEl.innerHTML = ` <br>
+      ${data.name}: <span style="color:red;">
+      ${data.score} </span>`;
+    top5Container.append(postEl); ///
+  }
 }

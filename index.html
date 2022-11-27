@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,61 +7,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- BLANKA GOOGLE FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Blaka&family=Rampart+One&display=swap"
+      rel="stylesheet" />
+
+    <!-- ACME GOOGLE FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+      rel="stylesheet" />
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
-    <title>FRUIT NINJA REPLICA</title>
+    <title>POP IT</title>
   </head>
   <body>
     <main>
-      <canvas id="canvas"></canvas>
+      <canvas class="canvas" id="canvas"></canvas>
 
       <div class="container" id="container">
         <div>
-          <h1>Fruit Ninja Replica</h1> </br>
-          <p>Instructions: Break as many circles as possible.</p>
-    </div>
-          <div id="nameDiv">
-            Enter your name below.
-            <form id="gamerNameForm">
-              <input type="text" name="gamerName" class="inputBox" />
-              <button type="submit" class="inputBox">Submit</button>
-            </form>
-          </div>
-    
-          <div id="welcomeMsg"></div>
-          <div id="letBegin">
-            <button class="startButton"   id="startButton">START!</button>
-          </div>
+          <h1>POP IT</h1>
+          <h2>Instructions:</h2>
+          <br />
+          <p>
+            Pop as many circles as possible within the time limit of 1 minute by
+            hovering over the circles.
+          </p>
+        </div>
+        <br />
+        <div id="nameDiv">
+          <p>Enter your name below</p>
+          <form id="gamerNameForm">
+            <input type="text" name="gamerName" class="inputBox" id="myText" />
+            <button type="submit" class="submit-button">Submit</button>
+          </form>
+        </div>
+
+        <div id="welcomeMsg"></div>
+        <div id="letBegin">
+          <button class="startButton" id="startButton">START</button>
+        </div>
       </div>
 
       <div class="scoreContainer" id="scoreContainer">
         <h3>Score: <span id="scoreCounter">0</span></h3>
-        </div>
+      </div>
 
       <div class="countDown">
         <p class="countDown-timer" id="countDownText">1:00</p>
       </div>
 
       <div class="end-game-div" id="endGameDiv">
-        <div class="end-game-div-styling">
-          <p id="endGameText" class="end-game-p">blablalblabla</p>
-          <button class="end-game-button">Go Home</button>
-        </div>
+        <!-- <div class="end-game-div-styling"> -->
+        <p id="endGameName">Name:</p>
+        <p id="endGameText" class="end-game-p">Score:</p>
+
+        <button class="end-game-button" id="goHomeBtn">HOME</button>
+
+        <div id="top5-container" class="top5-container">TOP 5</div>
+        <!-- </div> -->
       </div>
-      
     </main>
 
-      <footer id="footer-container">
-        <p>
-          Done by: Bahram, Jonathan, Madeleine, Sammani, Yinlu
-           &copy;copyright 2022&mdash;<span
-            id="currentYear"
-          ></span>
-        </p>  
-      </footer>
-     
+    <footer class="footer-container" id="footerContainer">
+      <p>
+        Done by: Bahram, Jonathan, Madeleine, Sammani, Yinlu &copy;copyright
+        2022&mdash;<span id="currentYear"></span>
+      </p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore-compat.js"></script>
     <script src="script.js" type="module"></script>
     <script src="canvas-script.js" type="module"></script>
+    <script src="particles.js" type="module"></script>
     <script src="timer.js" type="module"></script>
     <script src="score.js" type="module"></script>
   </body>
