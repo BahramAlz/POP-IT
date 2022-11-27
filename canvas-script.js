@@ -32,13 +32,15 @@ let endGameName = document.getElementById("endGameName");
 let top5Container = document.getElementById("top5-container");
 
 
-async function getPosts(){
-  const posts = await db.collection("posts").orderBy("score", "desc").limit(5).get();
-  // console.log(posts.docs[3].data()); 
-  renderPosts(posts.docs);
-}
+// async function getPosts(){       <--- this goes back 
+//   const posts = await db.collection("posts").orderBy("score", "desc").limit(5).get();   
+//   renderPosts(posts.docs);
+// }
+// db.collection("posts").orderBy("score", "desc").limit(5).onSnapshot(function (snapshot) {
+//   renderPosts(snapshot.docs)
+// });
 
-getPosts();
+// getPosts(); <-- this goes back
 
 //Main Logic for canvas
 export const canvas = document.getElementById("canvas");
@@ -124,10 +126,10 @@ function renderBalls() {
 }
 
 let numberOfBallsToRender = [1, 2, 3, 4];
-export let ballRendering;
+// export let ballRendering;
 //SetInterval to render the balls on an interval
 const startRenderingBallsInterval = () => {
-  ballRendering = setInterval(() => {
+  setInterval(() => {
     const numberOfBalls = Math.round(
       Math.random() * numberOfBallsToRender.length
     );
@@ -167,17 +169,20 @@ export function startGame() {
 }
 
 // END GAME FUNCTION
-export function endGame() {
+export async function endGame() {
   cancelAnimationFrame(animationId);
   endGameDiv.style.display = "block";
   endGameText.innerHTML = "Score: " + score;
   endGameName.innerHTML = "Name: " + gamerName.value;
 
-  db.collection("posts").add({
+  await db.collection("posts").add({
     name: gamerName.value,
     score: score
 });
-renderPosts(posts);
+db.collection("posts").orderBy("score", "desc").limit(5).onSnapshot(function (snapshot) {
+  renderPosts(snapshot.docs)
+});
+// renderPosts(posts);
 }
 
 function renderPosts(posts) {
@@ -193,9 +198,4 @@ function renderPosts(posts) {
       top5Container.append(postEl); /// 
   }
 
-}
-
-
-function openUp() {
-  top5Container.style.display = "block";
 }

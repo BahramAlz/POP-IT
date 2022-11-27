@@ -1,5 +1,5 @@
 "use strict";
-import { startGame, canvas, endGameDiv, ballRendering } from "./canvas-script.js"; //endgame
+import { startGame, canvas, endGame} from "./canvas-script.js"; //endgame
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";
 
@@ -15,17 +15,16 @@ let footerContainer = document.getElementById("footerContainer");
 let goHomeBtn = document.getElementById("goHomeBtn");
 
 goHomeBtn.addEventListener("click", function () {
-  // location.reload();
-  canvas.style.display = "none";
-  endGameDiv.style.display = "none";
-  containerDiv.style.display = "flex";
-  clearInterval(ballRendering);
+   location.reload();
+  // canvas.style.display = "none";
+  // endGameDiv.style.display = "none";
+  // containerDiv.style.display = "flex";
+  // clearInterval(ballRendering);
 })
 
 //  let gamerName = form.elements.gamerName.value;
 
 export let gamerName = document.getElementById("myText");
-// console.log(gamerName);
 
 //gamer name submit form
 form.onsubmit = function (event) {
@@ -35,7 +34,6 @@ form.onsubmit = function (event) {
   nameDiv.style.display = "none";
   startButtonDiv.style.display = "block";
   startButton.style.display = "block";
-  console.log(gamerName.value)
 };
 
 // start button
