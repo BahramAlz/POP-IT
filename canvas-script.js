@@ -184,6 +184,6 @@ function renderPosts(posts) {
     postEl.innerHTML = ` <br>
       ${data.name}: <span style="color:lightgreen;">
       ${data.score} </span>`;
-    top5Container.append(postEl);
+    top5Container.innerHTML = postEl.outerHTML;
   }
 }
