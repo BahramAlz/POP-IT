@@ -5,6 +5,7 @@ export let score = 0;
 export function addScore() {
   let scoreCounter = document.getElementById("scoreCounter"); // Jonathan
   scoreCounter.innerHTML = " " + (score++ + 1);
+  scoreCounter.style.color = "lightgreen";
 }
 
 const hiscores = JSON.parse(localStorage.getItem("hiscores")) || []; // Has to be set outside of the function.

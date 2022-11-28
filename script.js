@@ -2,6 +2,7 @@
 import { startGame } from "./canvas-script.js";
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";
+import { alertTimerEl, alertTimer } from "./alertTimer.js";
 
 const startButton = document.getElementById("startButton");
 const form = document.getElementById("gamerNameForm");
@@ -34,14 +35,18 @@ form.onsubmit = function (event) {
 startButton.addEventListener("click", Start);
 //the function 'Start' shows "the game starts now" on the screen for the time being
 function Start() {
-  //Hide the start button
+  alertTimer();
+  alertTimerEl.style.display = "block";
   containerDiv.style.display = "none";
-  countdownEL.style.display = "block";
-  scoreContainer.style.display = "block";
-  footerContainer.style.display = "none";
-  timerStart();
-  startGame();
-  score;
+  setTimeout(() => {
+    countdownEL.style.display = "block";
+    scoreContainer.style.display = "block";
+    footerContainer.style.display = "none";
+    alertTimerEl.style.display = "none";
+    timerStart();
+    startGame();
+    score;
+  }, 3555);
 }
 
 //copyright notice

@@ -3,8 +3,8 @@
 import { endGame } from "./canvas-script.js";
 
 export let countdownEL = document.getElementById("countDownText");
-let starting_minute = 0;
-let starting_second = 30;
+let starting_minute = 1;
+let starting_second = 0;
 let total_seconds = starting_minute * 60 + starting_second;
 let clock;
 
@@ -17,6 +17,8 @@ function clockStart() {
   countdown =
     countdown + (display_second < 10 ? "0" + display_second : display_second);
   countdownEL.innerHTML = countdown;
+
+  if (display_second <= 10) countdownEL.style.color = "red";
 }
 
 export function timerStart() {

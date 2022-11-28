@@ -27,23 +27,33 @@
 
       <div class="container" id="container">
         <div>
+          <h1>POP IT</h1>
+          <h2>Instructions:</h2>
+          <br />
+          <p>
+            Pop as many circles as possible within the time limit of 1 minute by
+            hovering over the circles.
+          </p>
+        </div>
+        <br />
+        <div id="nameDiv">
+          <p>Enter your name below</p>
+          <form id="gamerNameForm" autocomplete="off">
+            <input
+              type="text"
+              name="gamerName"
+              class="inputBox"
+              id="myText"
+              placeholder="Name"
+            />
+            <button type="submit" class="submit-button">Submit</button>
+          </form>
+        </div>
 
-          <h1>POP IT</h1> 
-          <h2>Instructions:</h2> <br>
-          <p>Pop as many circles as possible within the time limit of 1 minute by hovering over the circles.</p>
-      </div><br>
-          <div id="nameDiv">
-            <p>Enter your name below</p>
-            <form id="gamerNameForm" autocomplete="off">
-              <input type="text" name="gamerName" class="inputBox" id="myText" placeholder="Name"/>
-              <button type="submit" class="submit-button">Submit</button>
-            </form>
-          </div>
-    
-          <div id="welcomeMsg"></div>
-          <div id="letBegin">
-            <button class="startButton" id="startButton">START</button>
-          </div>
+        <div id="welcomeMsg"></div>
+        <div id="letBegin">
+          <button class="startButton" id="startButton">START</button>
+        </div>
       </div>
 
       <div class="scoreContainer" id="scoreContainer">
@@ -56,26 +66,27 @@
 
       <div class="end-game-div" id="endGameDiv">
         <!-- <div class="end-game-div-styling"> -->
-          <p id="endGameName">Name:</p>
-          <p id="endGameText" class="end-game-p">Score:</p>
-          
-          <button class="end-game-button" id="goHomeBtn">HOME</button>
-          
-          <div id="top5-container" class="top5-container">TOP 5</div>
+        <p id="endGameName">Name:</p>
+        <p id="endGameText" class="end-game-p">Score:</p>
+
+        <button class="end-game-button" id="goHomeBtn">HOME</button>
+
+        <div id="top5-container" class="top5-container">TOP 5</div>
         <!-- </div> -->
       </div>
+
+      <div class="alert-timer" id="alertTimer"><h2></h2></div>
     </main>
 
-
-      <footer class="footer-container" id="footerContainer">
-        <p>
-          Done by: Bahram, Jonathan, Madeleine, Sammani, Yinlu
-           &copy;copyright 2022&mdash;<span
-            id="currentYear"
-          ></span>
-        </p>
-        <a href="https://github.com/BahramAlz/POP-IT" target="_blank"><img src="logo/github.png" alt="github logo"></a>
-      </footer>
+    <footer class="footer-container" id="footerContainer">
+      <p>
+        Done by: Bahram, Jonathan, Madeleine, Sammani, Yinlu &copy;copyright
+        2022&mdash;<span id="currentYear"></span>
+      </p>
+      <a href="https://github.com/BahramAlz/POP-IT" target="_blank"
+        ><img src="logo/github.png" alt="github logo"
+      /></a>
+    </footer>
 
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore-compat.js"></script>

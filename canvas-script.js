@@ -171,7 +171,8 @@ export async function endGame() {
   cancelAnimationFrame(animationId);
 
   endGameDiv.style.display = "flex"; /// ändrad
-  endGameText.innerHTML = "Score: " + score;
+  endGameText.innerHTML =
+    "Score: " + `<span style="color:lightgreen;"> ${score} </span>`;
   endGameName.innerHTML = "Name: " + gamerName.value;
 
   await db.collection("posts").add({
@@ -195,12 +196,8 @@ function renderPosts(posts) {
 
     const postEl = document.createElement("p");
     postEl.innerHTML = ` <br>
-      ${data.name}: <span style="color:red;">
+      ${data.name}: <span style="color:lightgreen;">
       ${data.score} </span>`;
     top5Container.append(postEl); ///
-  }
-
-  if (renderPosts(posts)){
-    top5Container.replace(postEl)
   }
 }
