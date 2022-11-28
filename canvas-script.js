@@ -200,7 +200,7 @@ function renderPosts(posts) {
     top5Container.append(postEl); ///
   }
 
-  if (new postEl){
-    postEl.remove();
+  if (renderPosts(posts)){
+    top5Container.replace(postEl)
   }
 }
