@@ -172,7 +172,7 @@ export async function endGame() {
     .orderBy("score", "desc")
     .limit(5)
     .onSnapshot(function (snapshot) {
-      top5Container.innerHTML = "";
+      top5Container.innerHTML = "TOP 5";
       renderPosts(snapshot.docs);
     });
 }
