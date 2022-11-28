@@ -199,4 +199,8 @@ function renderPosts(posts) {
       ${data.score} </span>`;
     top5Container.append(postEl); ///
   }
+
+  if (new postEl){
+    postEl.remove();
+  }
 }
