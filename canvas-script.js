@@ -30,16 +30,6 @@ const endGameName = document.getElementById("endGameName");
 
 const top5Container = document.getElementById("top5-container");
 
-// async function getPosts(){       <--- this goes back
-//   const posts = await db.collection("posts").orderBy("score", "desc").limit(5).get();
-//   renderPosts(posts.docs);
-// }
-// db.collection("posts").orderBy("score", "desc").limit(5).onSnapshot(function (snapshot) {
-//   renderPosts(snapshot.docs)
-// });
-
-// getPosts(); <-- this goes back
-
 //Main Logic for canvas
 export const canvas = document.getElementById("canvas");
 export const context = canvas.getContext("2d");
@@ -124,7 +114,7 @@ function renderBalls() {
 }
 
 let numberOfBallsToRender = [1, 2, 3, 4];
-// export let ballRendering;
+
 //SetInterval to render the balls on an interval
 const startRenderingBallsInterval = () => {
   setInterval(() => {
@@ -150,7 +140,6 @@ function animate() {
 }
 
 //Collison / Mouse Coordinates & Behaviour
-
 let mouseX = 0;
 let mouseY = 0;
 
@@ -166,11 +155,11 @@ export function startGame() {
   canvas.style.display = "block";
 }
 
-// END GAME FUNCTION
+// END GAME FUNCTION & DATABASE
 export async function endGame() {
   cancelAnimationFrame(animationId);
 
-  endGameDiv.style.display = "flex"; /// ändrad
+  endGameDiv.style.display = "flex";
   endGameText.innerHTML =
     "Score: " + `<span style="color:lightgreen;"> ${score} </span>`;
   endGameName.innerHTML = "Name: " + gamerName.value;
@@ -185,12 +174,9 @@ export async function endGame() {
     .onSnapshot(function (snapshot) {
       renderPosts(snapshot.docs);
     });
-  // renderPosts(posts);
 }
 
 function renderPosts(posts) {
-  // postsEl.innerHTML = "";
-
   for (let post of posts) {
     const data = post.data();
 
@@ -198,6 +184,6 @@ function renderPosts(posts) {
     postEl.innerHTML = ` <br>
       ${data.name}: <span style="color:lightgreen;">
       ${data.score} </span>`;
-    top5Container.append(postEl); ///
+    top5Container.append(postEl);
   }
 }
