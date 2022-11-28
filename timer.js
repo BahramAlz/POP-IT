@@ -4,7 +4,7 @@ import { endGame } from "./canvas-script.js";
 
 export let countdownEL = document.getElementById("countDownText");
 let starting_minute = 0;
-let starting_second = 5;
+let starting_second = 20;
 let total_seconds = starting_minute * 60 + starting_second;
 let clock;
 
