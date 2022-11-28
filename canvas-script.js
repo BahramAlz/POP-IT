@@ -172,6 +172,7 @@ export async function endGame() {
     .orderBy("score", "desc")
     .limit(5)
     .onSnapshot(function (snapshot) {
+      top5Container.innerHTML = "";
       renderPosts(snapshot.docs);
     });
 }
@@ -184,6 +185,6 @@ function renderPosts(posts) {
     postEl.innerHTML = ` <br>
       ${data.name}: <span style="color:lightgreen;">
       ${data.score} </span>`;
-    top5Container.innerHTML = postEl.outerHTML;
+    top5Container.append(postEl);
   }
 }
