@@ -1,5 +1,3 @@
-"use strict";
-
 import { startGame } from "./canvas-script.js";
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";

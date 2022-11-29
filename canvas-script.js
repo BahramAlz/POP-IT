@@ -1,4 +1,11 @@
-"use strict";
+import {
+  ballParticlesArray,
+  BallParticles,
+  renderBallParticles,
+} from "./particles.js";
+
+import { addScore, score } from "./score.js";
+import { gamerName } from "./script.js";
 
 // FIREBASE (DATABASE NAME+SCORE STORAGE)
 const firebaseConfig = {
@@ -14,14 +21,6 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 // Importing Ball Explosions
-import {
-  ballParticlesArray,
-  BallParticles,
-  renderBallParticles,
-} from "./particles.js";
-
-import { addScore, score } from "./score.js";
-import { gamerName } from "./script.js";
 
 export let endGameDiv = document.getElementById("endGameDiv");
 const endGameText = document.getElementById("endGameText");
