@@ -16,7 +16,8 @@ body {
 }
 
 .canvas {
-  background-color: rgb(24, 28, 31);
+  /* background-color: rgb(24, 28, 31); */
+
   display: none;
   cursor: url('logo/finger.png'), auto;
 }

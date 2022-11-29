@@ -1,4 +1,5 @@
 "use strict";
+
 import { startGame } from "./canvas-script.js";
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";
@@ -12,12 +13,6 @@ const startButtonDiv = document.getElementById("letBegin");
 const containerDiv = document.getElementById("container");
 const currentYear = document.getElementById("currentYear");
 const footerContainer = document.getElementById("footerContainer");
-
-export let endGameDiv = document.getElementById("endGameDiv");
-const goHomeBtn = document.getElementById("goHomeBtn");
-goHomeBtn.addEventListener("click", function () {
-  location.reload();
-});
 
 export let gamerName = document.getElementById("myText");
 
@@ -53,3 +48,9 @@ function Start() {
 let date = new Date();
 let year = date.getFullYear();
 currentYear.innerHTML = year;
+
+export let endGameDiv = document.getElementById("endGameDiv");
+const goHomeBtn = document.getElementById("goHomeBtn");
+goHomeBtn.addEventListener("click", function () {
+  location.reload();
+});

@@ -1,7 +1,6 @@
 "use strict";
 
 // FIREBASE (DATABASE NAME+SCORE STORAGE)
-
 const firebaseConfig = {
   apiKey: "AIzaSyAbVO-rVsWIxdvAAotKjZ4fkiXMYneeGzo",
   authDomain: "pop-it-57db8.firebaseapp.com",
@@ -67,11 +66,15 @@ function Ball() {
   this.speedX = Math.random((Math.random() - 0.5) * 4);
 
   this.update = () => {
+    //this.y DECREASE AS WE SUBTRACTED THE Y OF THE BALL BY THE SPEED Y
+    //EXAMPLE: WINDOW.HEIGHT = 750 (this.y = 750) - this.speedY = 350
     this.y -= this.speedY;
     this.x += this.speedX;
+    //TO GET THE BALL TO THE BOTTOM AFTER REACHING THE HEIGHT
     this.speedY -= 0.1;
   };
 
+  //TO RENDER THE BALL ON THE CANVAS
   this.draw = () => {
     context.fillStyle = this.color;
     context.beginPath();
@@ -80,17 +83,20 @@ function Ball() {
   };
 }
 
+
+//THIS IS THE LOOP FOR RENDERING THE BALLS
 function renderBalls() {
   for (let i = 0; i < ballArray.length; i++) {
     ballArray[i].draw();
     ballArray[i].update();
 
-    //Collission
+    //DETECTING COLLISSION OF MOUSE POS AND BALL POS
     let distanceBetweenMouseAndBall = Math.hypot(
       mouseX - ballArray[i].x,
       mouseY - ballArray[i].y
     );
 
+    //IF MOUSE IS ON THE BALL .IE COLLISION
     if (distanceBetweenMouseAndBall - ballArray[i].size < 1) {
       addScore();
 

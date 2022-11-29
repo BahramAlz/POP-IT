@@ -8,19 +8,21 @@ export function addScore() {
   scoreCounter.style.color = "lightgreen";
 }
 
-const hiscores = JSON.parse(localStorage.getItem("hiscores")) || []; // Has to be set outside of the function.
+/////// LOCAL STORAGE ////////
 
-function nameStorage() {
-  let newName = form.elements.gamerName.value; //from script.js?
-  let newScore = Number(score.innerHTML);
+// const hiscores = JSON.parse(localStorage.getItem("hiscores")) || []; // Has to be set outside of the function.
 
-  const scoreObj = {
-    names: newName,
-    scores: newScore,
-  };
+// function nameStorage() {
+//   let newName = form.elements.gamerName.value; //from script.js?
+//   let newScore = Number(score.innerHTML);
 
-  hiscores.push(scoreObj);
-  hiscores.sort((a, b) => b.scores - a.scores);
-  hiscores.splice(5);
-  localStorage.setItem("hiscores", JSON.stringify(hiscores));
-}
+//   const scoreObj = {
+//     names: newName,
+//     scores: newScore,
+//   };
+
+//   hiscores.push(scoreObj);
+//   hiscores.sort((a, b) => b.scores - a.scores);
+//   hiscores.splice(5);
+//   localStorage.setItem("hiscores", JSON.stringify(hiscores));
+// }

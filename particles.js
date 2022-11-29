@@ -23,7 +23,7 @@ export function BallParticles(x, y, color) {
     this.x += this.speedX;
   };
 
-  //Rendering or Drawing Ball on the canvas
+  //Rendering of Drawing Ball on the canvas
   this.draw = () => {
     context.fillStyle = this.color;
     context.beginPath();
