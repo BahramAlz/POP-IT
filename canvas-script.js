@@ -20,7 +20,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-// Importing Ball Explosions
 
 export let endGameDiv = document.getElementById("endGameDiv");
 const endGameText = document.getElementById("endGameText");
@@ -51,35 +50,38 @@ const colors = [pink, purple, lightblue, cyan];
 //Ball Functionality
 let ballArray = [];
 
-function Ball() {
-  this.x = Math.floor(Math.random() * window.innerWidth);
-  this.y = Math.floor(window.innerHeight);
-  this.size = Math.floor(Math.random() * 10 + 35);
-  this.color = colors[randomColor(0, colors.length - 1)];
-  /*
-  URL: https://css-tricks.com/snippets/javascript/random-hex-color
-  this.color = '#' + Math.floor(Math.random()16777215).toString(16); 
-  */
+//Class
+class Ball {
+  constructor() {
+    //Constructor
+    this.x = Math.floor(Math.random() * window.innerWidth);
+    this.y = Math.floor(window.innerHeight);
+    this.size = Math.floor(Math.random() * 10 + 35);
+    this.color = colors[randomColor(0, colors.length - 1)];
+    /*
+    URL: https://css-tricks.com/snippets/javascript/random-hex-color
+    this.color = '#' + Math.floor(Math.random()16777215).toString(16);
+    */
+    this.speedY = 10;
+    this.speedX = Math.random((Math.random() - 0.5) * 4);
 
-  this.speedY = 10;
-  this.speedX = Math.random((Math.random() - 0.5) * 4);
+    this.update = () => {
+      //this.y DECREASE AS WE SUBTRACTED THE Y OF THE BALL BY THE SPEED Y
+      //EXAMPLE: WINDOW.HEIGHT = 750 (this.y = 750) - this.speedY = 350
+      this.y -= this.speedY;
+      this.x += this.speedX;
+      //TO GET THE BALL TO THE BOTTOM AFTER REACHING THE HEIGHT
+      this.speedY -= 0.1;
+    };
 
-  this.update = () => {
-    //this.y DECREASE AS WE SUBTRACTED THE Y OF THE BALL BY THE SPEED Y
-    //EXAMPLE: WINDOW.HEIGHT = 750 (this.y = 750) - this.speedY = 350
-    this.y -= this.speedY;
-    this.x += this.speedX;
-    //TO GET THE BALL TO THE BOTTOM AFTER REACHING THE HEIGHT
-    this.speedY -= 0.1;
-  };
-
-  //TO RENDER THE BALL ON THE CANVAS
-  this.draw = () => {
-    context.fillStyle = this.color;
-    context.beginPath();
-    context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    context.fill();
-  };
+    //TO RENDER THE BALL ON THE CANVAS
+    this.draw = () => {
+      context.fillStyle = this.color;
+      context.beginPath();
+      context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      context.fill();
+    };
+  }
 }
 
 
@@ -98,7 +100,6 @@ function renderBalls() {
     //IF MOUSE IS ON THE BALL .IE COLLISION
     if (distanceBetweenMouseAndBall - ballArray[i].size < 1) {
       addScore();
-
       //The amount of Ball Particles
       for (let index = 0; index < 8; index++) {
         ballParticlesArray.push(
