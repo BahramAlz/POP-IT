@@ -1,21 +1,3 @@
-"use strict";
-
-
-// FIREBASE (DATABASE NAME+SCORE STORAGE)
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAbVO-rVsWIxdvAAotKjZ4fkiXMYneeGzo",
-  authDomain: "pop-it-57db8.firebaseapp.com",
-  projectId: "pop-it-57db8",
-  storageBucket: "pop-it-57db8.appspot.com",
-  messagingSenderId: "466842860574",
-  appId: "1:466842860574:web:7b47ad936113f39236c20f"
-};
-
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-// Importing Ball Explosions
 import {
   ballParticlesArray,
   BallParticles,
@@ -25,22 +7,25 @@ import {
 import { addScore, score } from "./score.js";
 import { gamerName } from "./script.js";
 
+// FIREBASE (DATABASE NAME+SCORE STORAGE)
+const firebaseConfig = {
+  apiKey: "AIzaSyAbVO-rVsWIxdvAAotKjZ4fkiXMYneeGzo",
+  authDomain: "pop-it-57db8.firebaseapp.com",
+  projectId: "pop-it-57db8",
+  storageBucket: "pop-it-57db8.appspot.com",
+  messagingSenderId: "466842860574",
+  appId: "1:466842860574:web:7b47ad936113f39236c20f",
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 export let endGameDiv = document.getElementById("endGameDiv");
-let endGameText = document.getElementById("endGameText");
-let endGameName = document.getElementById("endGameName");
+const endGameText = document.getElementById("endGameText");
+const endGameName = document.getElementById("endGameName");
 
-let top5Container = document.getElementById("top5-container");
-
-
-// async function getPosts(){       <--- this goes back 
-//   const posts = await db.collection("posts").orderBy("score", "desc").limit(5).get();   
-//   renderPosts(posts.docs);
-// }
-// db.collection("posts").orderBy("score", "desc").limit(5).onSnapshot(function (snapshot) {
-//   renderPosts(snapshot.docs)
-// });
-
-// getPosts(); <-- this goes back
+const top5Container = document.getElementById("top5-container");
 
 //Main Logic for canvas
 export const canvas = document.getElementById("canvas");
@@ -55,57 +40,66 @@ function randomColor(min, max) {
 }
 
 //URL: palettes.shecodes.io
-let pink = "#ff5d9e";
-let purple = "#8f71ff";
-let lightblue = "#82acff";
-let cyan = "#8bffff";
+const pink = "#ff5d9e";
+const purple = "#8f71ff";
+const lightblue = "#82acff";
+const cyan = "#8bffff";
 
 const colors = [pink, purple, lightblue, cyan];
 
 //Ball Functionality
 let ballArray = [];
 
-function Ball() {
-  this.x = Math.floor(Math.random() * window.innerWidth);
-  this.y = Math.floor(window.innerHeight);
-  this.size = Math.floor(Math.random() * 10 + 35);
-  this.color = colors[randomColor(0, colors.length - 1)];
-  /*
-  URL: https://css-tricks.com/snippets/javascript/random-hex-color
-  this.color = '#' + Math.floor(Math.random()16777215).toString(16); 
-  */
+//Class
+class Ball {
+  constructor() {
+    //Constructor
+    this.x = Math.floor(Math.random() * window.innerWidth);
+    this.y = Math.floor(window.innerHeight);
+    this.size = Math.floor(Math.random() * 10 + 35);
+    this.color = colors[randomColor(0, colors.length - 1)];
+    /*
+    URL: https://css-tricks.com/snippets/javascript/random-hex-color
+    this.color = '#' + Math.floor(Math.random()16777215).toString(16);
+    */
+    this.speedY = 10;
+    this.speedX = Math.random((Math.random() - 0.5) * 4);
 
-  this.speedY = 10;
-  this.speedX = Math.random((Math.random() - 0.5) * 4);
+    this.update = () => {
+      //this.y DECREASE AS WE SUBTRACTED THE Y OF THE BALL BY THE SPEED Y
+      //EXAMPLE: WINDOW.HEIGHT = 750 (this.y = 750) - this.speedY = 350
+      this.y -= this.speedY;
+      this.x += this.speedX;
+      //TO GET THE BALL TO THE BOTTOM AFTER REACHING THE HEIGHT
+      this.speedY -= 0.1;
+    };
 
-  this.update = () => {
-    this.y -= this.speedY;
-    this.x += this.speedX;
-    this.speedY -= 0.1;
-  };
-
-  this.draw = () => {
-    context.fillStyle = this.color;
-    context.beginPath();
-    context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    context.fill();
-  };
+    //TO RENDER THE BALL ON THE CANVAS
+    this.draw = () => {
+      context.fillStyle = this.color;
+      context.beginPath();
+      context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      context.fill();
+    };
+  }
 }
 
+
+//THIS IS THE LOOP FOR RENDERING THE BALLS
 function renderBalls() {
   for (let i = 0; i < ballArray.length; i++) {
     ballArray[i].draw();
     ballArray[i].update();
 
-    //Collission
+    //DETECTING COLLISSION OF MOUSE POS AND BALL POS
     let distanceBetweenMouseAndBall = Math.hypot(
       mouseX - ballArray[i].x,
       mouseY - ballArray[i].y
     );
 
+    //IF MOUSE IS ON THE BALL .IE COLLISION
     if (distanceBetweenMouseAndBall - ballArray[i].size < 1) {
       addScore();
-
       //The amount of Ball Particles
       for (let index = 0; index < 8; index++) {
         ballParticlesArray.push(
@@ -126,7 +120,7 @@ function renderBalls() {
 }
 
 let numberOfBallsToRender = [1, 2, 3, 4];
-// export let ballRendering;
+
 //SetInterval to render the balls on an interval
 const startRenderingBallsInterval = () => {
   setInterval(() => {
@@ -152,7 +146,6 @@ function animate() {
 }
 
 //Collison / Mouse Coordinates & Behaviour
-
 let mouseX = 0;
 let mouseY = 0;
 
@@ -168,34 +161,36 @@ export function startGame() {
   canvas.style.display = "block";
 }
 
-// END GAME FUNCTION
+// END GAME FUNCTION & DATABASE
 export async function endGame() {
   cancelAnimationFrame(animationId);
-  endGameDiv.style.display = "block";
-  endGameText.innerHTML = "Score: " + score;
+
+  endGameDiv.style.display = "flex";
+  endGameText.innerHTML =
+    "Score: " + `<span style="color:lightgreen;"> ${score} </span>`;
   endGameName.innerHTML = "Name: " + gamerName.value;
 
   await db.collection("posts").add({
     name: gamerName.value,
-    score: score
-});
-db.collection("posts").orderBy("score", "desc").limit(5).onSnapshot(function (snapshot) {
-  renderPosts(snapshot.docs)
-});
-// renderPosts(posts);
+    score: score,
+  });
+  db.collection("posts")
+    .orderBy("score", "desc")
+    .limit(5)
+    .onSnapshot(function (snapshot) {
+      top5Container.innerHTML = "TOP 5";
+      renderPosts(snapshot.docs);
+    });
 }
 
 function renderPosts(posts) {
-  // postsEl.innerHTML = "";
-
   for (let post of posts) {
-      const data = post.data();
+    const data = post.data();
 
-      const postEl = document.createElement("p");
-      postEl.innerHTML = ` <br>
-      ${data.name}: <span style="color:red;">
+    const postEl = document.createElement("p");
+    postEl.innerHTML = ` <br>
+      ${data.name}: <span style="color:lightgreen;">
       ${data.score} </span>`;
-      top5Container.append(postEl); /// 
+    top5Container.append(postEl);
   }
-
 }

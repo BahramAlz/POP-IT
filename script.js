@@ -1,28 +1,16 @@
-"use strict";
-import { startGame, canvas, endGame} from "./canvas-script.js"; //endgame
+import { startGame } from "./canvas-script.js";
 import { timerStart, countdownEL } from "./timer.js";
 import { scoreContainer, score } from "./score.js";
+import { alertTimerEl, alertTimer } from "./alertTimer.js";
 
-
-let startButton = document.getElementById("startButton");
-let form = document.getElementById("gamerNameForm");
-let welcomeMsg = document.getElementById("welcomeMsg");
-let nameDiv = document.getElementById("nameDiv");
-let startButtonDiv = document.getElementById("letBegin");
-let containerDiv = document.getElementById("container");
-let currentYear = document.getElementById("currentYear");
-let footerContainer = document.getElementById("footerContainer");
-let goHomeBtn = document.getElementById("goHomeBtn");
-
-goHomeBtn.addEventListener("click", function () {
-   location.reload();
-  // canvas.style.display = "none";
-  // endGameDiv.style.display = "none";
-  // containerDiv.style.display = "flex";
-  // clearInterval(ballRendering);
-})
-
-//  let gamerName = form.elements.gamerName.value;
+const startButton = document.getElementById("startButton");
+const form = document.getElementById("gamerNameForm");
+const welcomeMsg = document.getElementById("welcomeMsg");
+const nameDiv = document.getElementById("nameDiv");
+const startButtonDiv = document.getElementById("letBegin");
+const containerDiv = document.getElementById("container");
+const currentYear = document.getElementById("currentYear");
+const footerContainer = document.getElementById("footerContainer");
 
 export let gamerName = document.getElementById("myText");
 
@@ -40,17 +28,27 @@ form.onsubmit = function (event) {
 startButton.addEventListener("click", Start);
 //the function 'Start' shows "the game starts now" on the screen for the time being
 function Start() {
-  //Hide the start button
+  alertTimer();
+  alertTimerEl.style.display = "block";
   containerDiv.style.display = "none";
-  countdownEL.style.display = "block";
-  scoreContainer.style.display = "block";
-  footerContainer.style.display = "none";
-  timerStart();
-  startGame();
-  score;
+  setTimeout(() => {
+    countdownEL.style.display = "block";
+    scoreContainer.style.display = "block";
+    footerContainer.style.display = "none";
+    alertTimerEl.style.display = "none";
+    timerStart();
+    startGame();
+    score;
+  }, 3555);
 }
 
 //copyright notice
 let date = new Date();
 let year = date.getFullYear();
 currentYear.innerHTML = year;
+
+export let endGameDiv = document.getElementById("endGameDiv");
+const goHomeBtn = document.getElementById("goHomeBtn");
+goHomeBtn.addEventListener("click", function () {
+  location.reload();
+});

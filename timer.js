@@ -1,5 +1,3 @@
-"use strict";
-
 import { endGame } from "./canvas-script.js";
 
 export let countdownEL = document.getElementById("countDownText");
@@ -17,11 +15,12 @@ function clockStart() {
   countdown =
     countdown + (display_second < 10 ? "0" + display_second : display_second);
   countdownEL.innerHTML = countdown;
+
+  if (display_second <= 10) countdownEL.style.color = "red";
 }
 
 export function timerStart() {
   clock = setInterval(() => clockStart(), 1000);
-  //prevent multiple clicks
 }
 
 //Count finish function
