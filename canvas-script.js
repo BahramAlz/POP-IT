@@ -63,7 +63,7 @@ class Ball {
     this.color = '#' + Math.floor(Math.random()16777215).toString(16);
     */
 
-    //hOW FAR THE BALL FLYS
+    //HOW FAR THE BALL FLYS (NOT THE SPEED)
     this.speedY = 10;
 
     /*
