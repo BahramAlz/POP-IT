@@ -62,14 +62,25 @@ class Ball {
     URL: https://css-tricks.com/snippets/javascript/random-hex-color
     this.color = '#' + Math.floor(Math.random()16777215).toString(16);
     */
+
+    //hOW FAR THE BALL FLYS
     this.speedY = 10;
-    this.speedX = Math.random((Math.random() - 0.5) * 4);
+
+    /*
+    THE ARC OF THE FALLING BALL 
+    HOW THE BALL ARCS OR FALLS AFTER REACHING THE MAX HEIGHT AND STARTS GOING DOWN 
+    CAN ALSO BE CHANGED WITH NUMBERS INSTEAD OF MATH.RANDOM()
+    */
+    this.speedX = Math.random();
 
     this.update = () => {
       //this.y DECREASE AS WE SUBTRACTED THE Y OF THE BALL BY THE SPEED Y
-      //EXAMPLE: WINDOW.HEIGHT = 750 (this.y = 750) - this.speedY = 350
+      //EXAMPLE: WINDOW.HEIGHT = 750 (this.y = 750) - this.speedY = 350 = NEW WINDOW.HEIGHT = 400 (LANDING POINT FOR THE BALL)
       this.y -= this.speedY;
+
+      //CHOOSES WHAT WAY THE BALL IS MOVING TO (+ FOR RIGHT AND - FOR LEFT)
       this.x += this.speedX;
+      
       //TO GET THE BALL TO THE BOTTOM AFTER REACHING THE HEIGHT
       this.speedY -= 0.1;
     };
